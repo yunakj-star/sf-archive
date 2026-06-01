@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SF 단편 소설 아카이브</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🚀 SF 단편 소설 아카이브</h1>
+    <p>학생들이 상상한 미래와 우주, 그리고 인간에 대한 이야기들</p>
+    
+    <!-- 반별 버튼 -->
+    <nav class="class-nav">
+      <button onclick="filterByClass(1)">1반 보기</button>
+      <button onclick="filterByClass(2)">2반 보기</button>
+      <button onclick="filterByClass(3)">3반 보기</button>
+      <button onclick="showAll()">전체 보기</button>
+    </nav>
+  </header>
+
+  <main>
+    <h2 id="current-view-title">전체 작품 목록</h2>
+    
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>학번</th>
+            <th>제목</th>
+            <th>키워드</th>
+          </tr>
+        </thead>
+        <tbody id="story-tbody">
+          <!-- 자바스크립트가 여기에 목록을 자동으로 채웁니다 -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- 작품 소개 팝업(모달) -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="modal-header">
+        <span id="modal-author" class="badge"></span>
+      </div>
+      <h2 id="modal-title"></h2>
+      <div id="modal-keywords" class="keyword-container"></div>
+      
+      <div class="modal-body">
+        <h3>작품 소개</h3>
+        <p id="modal-desc"></p>
+      </div>
+      
+      <div class="modal-footer">
+        <a id="modal-link" href="#" target="_blank" class="read-btn">작품 읽으러 가기</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

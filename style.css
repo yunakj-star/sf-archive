@@ -1,0 +1,159 @@
+:root {
+  --primary-color: #1a365d;
+  --bg-color: #f7fafc;
+  --table-border: #e2e8f0;
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: #2d3748;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h1 {
+  color: var(--primary-color);
+  font-size: 2.2rem;
+}
+
+/* 네비게이션 버튼 */
+.class-nav {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.class-nav button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.class-nav button:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* 테이블(표) */
+.table-container {
+  overflow-x: auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--table-border);
+}
+
+th {
+  background-color: #edf2f7;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+td a.title-link {
+  color: var(--primary-color);
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+td a.title-link:hover {
+  text-decoration: underline;
+}
+
+/* 키워드 태그 */
+.keyword {
+  display: inline-block;
+  padding: 4px 10px;
+  margin: 2px;
+  background-color: #e2e8f0;
+  color: #4a5568;
+  border-radius: 12px;
+  font-size: 0.85em;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.keyword:hover {
+  background-color: #cbd5e0;
+}
+
+/* 팝업(모달) */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  box-shadow: 0 20px 25px rgba(0,0,0,0.1);
+}
+
+.close {
+  position: absolute;
+  top: 15px; right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #a0aec0;
+}
+
+.badge {
+  background: var(--primary-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.modal-body {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f7fafc;
+  border-radius: 8px;
+}
+
+.read-btn {
+  display: block;
+  text-align: center;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
