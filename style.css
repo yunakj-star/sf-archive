@@ -1,4 +1,4 @@
-/* 1. 구글 폰트 불러오기 (영어용 Rajdhani, 한글용 Jua) */
+/* 1. 구글 폰트 불러오기 (영어/숫자용 Rajdhani, 전체용 Jua) */
 @import url('https://fonts.googleapis.com/css2?family=Jua&family=Rajdhani:wght@500;600;700&display=swap');
 
 /* 2. 우주 & 미래지향적 컬러 테마 변수 */
@@ -13,8 +13,8 @@
   --border-color: #1e293b;
   --glow-effect: 0 0 10px rgba(0, 240, 255, 0.4);
   
-  --font-sf: 'Rajdhani', sans-serif; /* 영어/숫자용 SF 폰트 */
-  --font-body: 'Jua', sans-serif; /* 한글용 둥글고 귀여운 폰트 */
+  --font-sf: 'Rajdhani', sans-serif; /* 학번(숫자)용 SF 폰트 */
+  --font-body: 'Jua', sans-serif; /* 전체 텍스트용 둥글고 귀여운 폰트 */
 }
 
 /* 3. 배경색이 검정 <-> 네이비로 천천히 숨쉬듯 변하는 애니메이션 */
@@ -23,7 +23,7 @@
   100% { background-color: var(--bg-navy); }
 }
 
-/* 전체 기본 스타일 적용 */
+/* 전체 기본 스타일 적용 (Jua 폰트 적용) */
 body {
   font-family: var(--font-body);
   color: var(--text-main);
@@ -63,7 +63,7 @@ header {
 }
 
 h1 {
-  font-family: var(--font-sf); 
+  font-family: var(--font-body); /* Jua 폰트로 변경 */
   font-weight: 700;
   color: var(--accent-cyan);
   font-size: 2.8rem;
@@ -108,7 +108,7 @@ header p {
 
 /* 테이블(작품 목록) 영역 */
 #current-view-title {
-  font-family: var(--font-sf);
+  font-family: var(--font-body); /* Jua 폰트로 변경 */
   color: #fff;
   border-left: 4px solid var(--accent-cyan);
   padding-left: 15px;
@@ -139,7 +139,7 @@ th, td {
 }
 
 th {
-  font-family: var(--font-sf);
+  font-family: var(--font-body); /* Jua 폰트로 변경 */
   background-color: rgba(15, 23, 42, 0.6);
   color: var(--accent-cyan);
   border-bottom: 2px solid var(--accent-blue);
@@ -147,8 +147,9 @@ th {
   font-size: 1.2rem;
 }
 
+/* ★ 학번이 들어가는 첫 번째 열(Rajdhani 유지) ★ */
 td:first-child {
-  font-family: var(--font-sf);
+  font-family: var(--font-sf); 
   font-size: 1.2rem;
   font-weight: 500;
   color: var(--text-muted);
@@ -230,7 +231,7 @@ td a.title-link:hover {
 }
 
 .badge {
-  font-family: var(--font-sf);
+  font-family: var(--font-body); /* Jua 폰트로 변경 */
   background: transparent;
   color: var(--accent-cyan);
   border: 1px solid var(--accent-cyan);
@@ -259,7 +260,7 @@ td a.title-link:hover {
 }
 
 .modal-body h3 {
-  font-family: var(--font-sf);
+  font-family: var(--font-body); /* Jua 폰트로 변경 */
   margin-top: 0;
   color: var(--accent-cyan);
   font-size: 1.3rem;
