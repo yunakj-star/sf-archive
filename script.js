@@ -102,5 +102,5 @@ function closeModal() {
 
 // 초기 화면 로딩 시 전체 목록 보여주기
 window.onload = () => {
-  showAll();
+  filterClass('1반');
 };
