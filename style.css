@@ -333,3 +333,18 @@ td a.title-link:hover {
   color: #000;
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
 }
+
+/* ★ 익명반 & 전체보기 버튼 특별 스타일 (키워드와 동일한 네온 파란색) */
+.class-nav button.blue-btn {
+  /* 키워드 태그와 동일한 파란색 계열 배경 및 선 색상 적용 */
+  background-color: rgba(59, 130, 246, 0.1); 
+  color: var(--accent-blue);
+  border: 1px solid var(--accent-blue);
+  box-shadow: inset 0 0 5px rgba(59, 130, 246, 0.2);
+}
+
+.class-nav button.blue-btn:hover {
+  background-color: var(--accent-blue);
+  color: #fff; /* 마우스를 올렸을 때 글자색을 흰색으로 변경하여 가독성 확보 */
+  box-shadow: 0 0 10px var(--accent-blue); /* 네온 파란색 빛번짐 효과 */
+}
