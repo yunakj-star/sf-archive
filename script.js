@@ -22,6 +22,7 @@ window.onload = () => {
         return {
           classNum: row['반'] ? row['반'].toString().trim() : '익명',
           id: row['학번'] || '익명', 
+          name: row['이름'] || '익명',
           title: row['소설 제목'],
           keywords: keywordsArray,
           desc: row['작품 소개'],
