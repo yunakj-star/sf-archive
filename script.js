@@ -1,32 +1,47 @@
-// 1. 학생 작품 데이터 (여기에 280명을 엑셀에서 복사해 넣으면 됩니다)
-const stories = [
-  {
-    classNum: 1,
-    id: "10101",
-    title: "화성의 마지막 편지",
-    keywords: ["우주", "고립", "기억"],
-    desc: "화성 기지에 홀로 남은 인물이 지구로 보내는 마지막 송신 기록을 담은 이야기입니다.",
-    link: "https://docs.google.com/..." // 작품 Google Docs 링크 등
-  },
-  {
-    classNum: 1,
-    id: "10102",
-    title: "안드로이드의 꿈",
-    keywords: ["AI", "정체성", "미래사회"],
-    desc: "인간과 똑같은 감정을 가지게 된 폐기 직전의 안드로이드가 꾸는 꿈에 대한 단편.",
-    link: "https://docs.google.com/..."
-  },
-  {
-    classNum: 2,
-    id: "10201",
-    title: "시간 세탁소",
-    keywords: ["시간여행", "기억", "가족"],
-    desc: "지우고 싶은 과거의 1분을 세탁해 주는 비밀스러운 세탁소 이야기.",
-    link: "https://docs.google.com/..."
-  }
-];
+// 1. 구글 스프레드시트 '웹에 게시(CSV)' 링크를 아래 따옴표 안에 넣으세요.
+const SHEET_CSV_URL = "여기에_구글_시트_CSV_링크를_넣어주세요";
 
-// 2. 화면에 표를 그리는 함수
+let stories = [];
+
+// 2. 초기 화면 로딩 시 데이터 가져오기
+window.onload = () => {
+  document.getElementById('story-tbody').innerHTML = '<tr><td colspan="3" style="text-align:center;">구글 시트에서 데이터를 불러오는 중입니다...</td></tr>';
+
+  Papa.parse(SHEET_CSV_URL, {
+    download: true,
+    header: true,
+    complete: function(results) {
+      const data = results.data;
+      
+      // 구글 시트 데이터를 웹사이트 형태에 맞게 변환
+      stories = data.filter(row => row['소설 제목']).map(row => {
+        // 키워드를 쉼표(,)로 분리하여 배열로 만듭니다.
+        const keywordString = row['키워드'] || "";
+        const keywordsArray = keywordString.split(',').map(k => k.trim()).filter(k => k);
+        
+        return {
+          classNum: row['반'] ? row['반'].toString().trim() : '익명',
+          id: row['학번'] || '익명', 
+          title: row['소설 제목'],
+          keywords: keywordsArray,
+          desc: row['작품 소개'],
+          link: row['링크'],
+// ▼ 새로 추가된 부분: 교사 추천 열에 'O'나 'o'가 있으면 true로 설정
+          isRecommended: row['교사 추천'] === 'O' || row['교사 추천'] === 'o'
+        };
+      });
+      
+      // 처음 로딩 시 '익명' 반을 먼저 보여줍니다.
+      filterByClass('익명');
+    },
+    error: function(error) {
+      console.error("데이터 로드 실패:", error);
+      document.getElementById('story-tbody').innerHTML = '<tr><td colspan="3" style="text-align:center;">데이터를 불러오는 중 오류가 발생했습니다. 링크를 확인해주세요.</td></tr>';
+    }
+  });
+};
+
+// 3. 화면에 표를 그리는 함수
 function renderTable(data, viewTitle) {
   document.getElementById('current-view-title').innerText = viewTitle;
   const tbody = document.getElementById('story-tbody');
@@ -45,6 +60,9 @@ function renderTable(data, viewTitle) {
       `<span class="keyword" onclick="filterByKeyword('${kw}')">${kw}</span>`
     ).join('');
 
+// ▼ 새로 추가된 부분: 추천작이면 별 아이콘 생성
+    const starBadge = story.isRecommended ? `<span class="star-icon">★</span>` : '';
+
     tr.innerHTML = `
       <td>${story.id}</td>
       <td>
@@ -58,35 +76,41 @@ function renderTable(data, viewTitle) {
   });
 }
 
-// 3. 반별로 모아보기
+// 4. 반별로 모아보기
 function filterByClass(classNum) {
   const filtered = stories.filter(story => story.classNum === classNum);
-  renderTable(filtered, `${classNum}반 작품 목록`);
+  const viewTitle = classNum === '익명' ? "익명반 작품 목록" : `${classNum}반 작품 목록`;
+  renderTable(filtered, viewTitle);
 }
 
-// 4. 키워드로 모아보기 (이것이 요청하신 기능입니다!)
+// 5. 키워드로 모아보기
 function filterByKeyword(keyword) {
-  // 모달이 열려있다면 닫기
   closeModal(); 
-  
-  // 해당 키워드가 포함된 소설만 필터링
   const filtered = stories.filter(story => story.keywords.includes(keyword));
   renderTable(filtered, `키워드 검색 결과 : #${keyword} (${filtered.length}건)`);
 }
 
-// 5. 전체 보기
+// 6. 전체 보기
 function showAll() {
   renderTable(stories, "전체 작품 목록");
 }
 
-// 6. 팝업(모달) 열기
+// 7. 팝업(모달) 열기
 function openModal(story) {
   document.getElementById('modal-author').innerText = `학번: ${story.id}`;
+
+// ▼ 새로 추가된 부분: 모달 제목에도 별 아이콘 추가
+  const starBadge = story.isRecommended ? `<span class="star-icon">★</span> ` : '';
+  document.getElementById('modal-title').innerHTML = starBadge + story.title;
+  
+  document.getElementById('modal-desc').innerText = story.desc;
+  document.getElementById('modal-link').href = story.link;
+
+
   document.getElementById('modal-title').innerText = story.title;
   document.getElementById('modal-desc').innerText = story.desc;
   document.getElementById('modal-link').href = story.link;
 
-  // 팝업 안에서도 키워드 누르면 필터링 되도록 적용
   const keywordHTML = story.keywords.map(kw => 
     `<span class="keyword" onclick="filterByKeyword('${kw}')">${kw}</span>`
   ).join('');
@@ -95,12 +119,15 @@ function openModal(story) {
   document.getElementById('modal').style.display = 'flex';
 }
 
-// 7. 팝업(모달) 닫기
+// 8. 팝업(모달) 닫기
 function closeModal() {
   document.getElementById('modal').style.display = 'none';
 }
 
-// 초기 화면 로딩 시 전체 목록 보여주기
-window.onload = () => {
-  filterByClass(1);
-};
+
+// 9. 추천작 모아보기
+function filterByRecommended() {
+  closeModal(); 
+  const filtered = stories.filter(story => story.isRecommended);
+  renderTable(filtered, "★ 추천 목록");
+}
