@@ -5,23 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SF 단편 소설 아카이브</title>
   <link rel="stylesheet" href="style.css">
+  <!-- 구글 시트 데이터를 읽기 위한 PapaParse 라이브러리 추가 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 </head>
 <body>
   <header>
     <h1> ✨ 2026 SF 단편 아카이브 ✨ </h1>
     <p>아직 도착하지 않은 내일에 대한 짧은 기록들</p>
     
-    <!-- 반별 버튼 -->
+    <!-- 1~11반, 익명반 버튼 -->
     <nav class="class-nav">
-      <button onclick="filterByClass(1)">1반 보기</button>
-      <button onclick="filterByClass(2)">2반 보기</button>
-      <button onclick="filterByClass(3)">3반 보기</button>
+<!-- 새로 추가되는 교사 추천작 버튼 -->
+      <button onclick="filterByRecommended()" class="recommend-btn">★ 추천</button>
+
+      <button onclick="filterByClass('익명')">익명반 보기</button>
+      <button onclick="filterByClass('1')">1반 보기</button>
+      <button onclick="filterByClass('2')">2반 보기</button>
+      <button onclick="filterByClass('3')">3반 보기</button>
+      <button onclick="filterByClass('4')">4반 보기</button>
+      <button onclick="filterByClass('5')">5반 보기</button>
+      <button onclick="filterByClass('6')">6반 보기</button>
+      <button onclick="filterByClass('7')">7반 보기</button>
+      <button onclick="filterByClass('8')">8반 보기</button>
+      <button onclick="filterByClass('9')">9반 보기</button>
+      <button onclick="filterByClass('10')">10반 보기</button>
+      <button onclick="filterByClass('11')">11반 보기</button>
       <button onclick="showAll()">전체 보기</button>
     </nav>
   </header>
 
   <main>
-    <h2 id="current-view-title">전체 작품 목록</h2>
+    <h2 id="current-view-title">로딩 중...</h2>
     
     <div class="table-container">
       <table>
