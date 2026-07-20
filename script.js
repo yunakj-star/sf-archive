@@ -66,6 +66,7 @@ function renderTable(data, viewTitle) {
 
     tr.innerHTML = `
       <td>${story.id}</td>
+      <td>${story.name}</td>
       <td>
         <a class="title-link" onclick='openModal(${JSON.stringify(story)})'>
           ${story.title}
@@ -98,7 +99,7 @@ function showAll() {
 
 // 7. 팝업(모달) 열기
 function openModal(story) {
-  document.getElementById('modal-author').innerText = `학번: ${story.id}`;
+  document.getElementById('modal-author').innerText = `학번: ${story.id} | 이름: ${story.name}`;
 
 // ▼ 새로 추가된 부분: 모달 제목에도 별 아이콘 추가
   const starBadge = story.isRecommended ? `<span class="star-icon">★</span> ` : '';
