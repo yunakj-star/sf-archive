@@ -91,14 +91,23 @@ header p {
   font-size: 1.2rem;
 }
 
-/* 네비게이션 버튼 여백 약간 축소 */
+/* 네비게이션 컨테이너 (위아래 줄바꿈 설정) */
 .class-nav {
   margin-top: 30px;
   display: flex;
-  justify-content: center;
-  gap: 10px; /* 기존 15px에서 10px로 간격 축소 */
-  flex-wrap: wrap;
+  flex-direction: column; /* 그룹을 세로로 배치하여 강제 줄바꿈 */
+  align-items: center;
+  gap: 12px; /* 윗줄과 아랫줄 사이의 간격 */
 }
+
+/* 각 줄(row)의 버튼 가로 배치 설정 */
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* 버튼과 버튼 사이의 간격 */
+  flex-wrap: wrap; /* 모바일 화면처럼 좁을 때는 자연스럽게 추가 줄바꿈 */
+}
+
 
 .class-nav button {
   font-family: var(--font-body);
