@@ -91,18 +91,18 @@ header p {
   font-size: 1.2rem;
 }
 
-/* 네비게이션 버튼 */
+/* 네비게이션 버튼 여백 약간 축소 */
 .class-nav {
   margin-top: 30px;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 10px; /* 기존 15px에서 10px로 간격 축소 */
   flex-wrap: wrap;
 }
 
 .class-nav button {
   font-family: var(--font-body);
-  padding: 10px 20px;
+  padding: 8px 16px; /* 버튼 크기 살짝 축소 */
   background-color: rgba(0, 0, 0, 0.3);
   color: var(--accent-cyan);
   border: 1px solid var(--accent-cyan);
@@ -111,7 +111,7 @@ header p {
   letter-spacing: 1px;
   transition: all 0.3s ease;
   box-shadow: inset 0 0 5px rgba(0, 240, 255, 0.1);
-  font-size: 1.1rem;
+  font-size: 1rem; /* 폰트 크기 살짝 축소 */
 }
 
 .class-nav button:hover {
@@ -301,4 +301,26 @@ td a.title-link:hover {
 .read-btn:hover {
   box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
   transform: translateY(-2px);
+}
+
+/* ★ 추천 별 아이콘 스타일 (네온 빛 효과) */
+.star-icon {
+  color: #FFD700; /* 골드 색상 */
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.8), 0 0 15px rgba(255, 215, 0, 0.4);
+  margin-right: 5px;
+  font-size: 1.1em;
+}
+
+/* ★ 추천작 모아보기 버튼 특별 스타일 */
+.class-nav button.recommend-btn {
+  background-color: rgba(255, 215, 0, 0.15);
+  color: #FFD700;
+  border: 1px solid #FFD700;
+  box-shadow: inset 0 0 5px rgba(255, 215, 0, 0.2);
+}
+
+.class-nav button.recommend-btn:hover {
+  background-color: #FFD700;
+  color: #000;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
 }
