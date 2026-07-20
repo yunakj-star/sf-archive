@@ -15,22 +15,27 @@
     
     <!-- 1~11반, 익명반 버튼 -->
     <nav class="class-nav">
-<!-- 새로 추가되는 교사 추천작 버튼 -->
-      <button onclick="filterByRecommended()" class="recommend-btn">★ 추천</button>
+      <!-- 첫 번째 줄: 추천작, 1반~6반 -->
+      <div class="button-row">
+        <button onclick="filterByRecommended()" class="recommend-btn">★추천</button>
+        <button onclick="filterByClass('1')">1반 보기</button>
+        <button onclick="filterByClass('2')">2반 보기</button>
+        <button onclick="filterByClass('3')">3반 보기</button>
+        <button onclick="filterByClass('4')">4반 보기</button>
+        <button onclick="filterByClass('5')">5반 보기</button>
+        <button onclick="filterByClass('6')">6반 보기</button>
+      </div>
       
-      <button onclick="filterByClass('1')">1반 보기</button>
-      <button onclick="filterByClass('2')">2반 보기</button>
-      <button onclick="filterByClass('3')">3반 보기</button>
-      <button onclick="filterByClass('4')">4반 보기</button>
-      <button onclick="filterByClass('5')">5반 보기</button>
-      <button onclick="filterByClass('6')">6반 보기</button>
-      <button onclick="filterByClass('7')">7반 보기</button>
-      <button onclick="filterByClass('8')">8반 보기</button>
-      <button onclick="filterByClass('9')">9반 보기</button>
-      <button onclick="filterByClass('10')">10반 보기</button>
-      <button onclick="filterByClass('11')">11반 보기</button>
-      <button onclick="filterByClass('익명')">익명반 보기</button>
-      <button onclick="showAll()">전체 보기</button>
+      <!-- 두 번째 줄: 7반~11반, 익명반, 전체보기 -->
+      <div class="button-row">
+        <button onclick="filterByClass('7')">7반 보기</button>
+        <button onclick="filterByClass('8')">8반 보기</button>
+        <button onclick="filterByClass('9')">9반 보기</button>
+        <button onclick="filterByClass('10')">10반 보기</button>
+        <button onclick="filterByClass('11')">11반 보기</button>
+        <button onclick="filterByClass('익명')">익명희망 보기</button>
+        <button onclick="showAll()">전체 보기</button>
+      </div>
     </nav>
   </header>
 
