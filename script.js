@@ -1,5 +1,5 @@
 // 1. 구글 스프레드시트 '웹에 게시(CSV)' 링크를 아래 따옴표 안에 넣으세요.
-const SHEET_CSV_URL = "여기에_구글_시트_CSV_링크를_넣어주세요";
+const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTs79htLy52BMwHs0vl2ZKOG48accaGLgHSvFoFqbwvYQjVZZc6ElDCB4sjdF5nE8GDexMqlhag1Zw4/pub?output=csv";
 
 let stories = [];
 
