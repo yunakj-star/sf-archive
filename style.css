@@ -150,15 +150,26 @@ header p {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
+/* 표 전체 설정 */
 table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed; /* ★핵심: 내용 길이에 상관없이 열 너비를 고정시킴 */
 }
+
+/* ★ 새로 추가: 각 열(칸)의 너비를 비율로 고정 */
+th:nth-child(1) { width: 15%; } /* 1열: 학번 */
+th:nth-child(2) { width: 15%; } /* 2열: 이름 */
+th:nth-child(3) { width: 40%; } /* 3열: 제목 (가장 넓게) */
+th:nth-child(4) { width: 30%; } /* 4열: 키워드 */
 
 th, td {
   padding: 18px 16px; 
   text-align: left;
   border-bottom: 1px solid var(--border-color);
+  /* 글자가 너무 길면 칸을 벗어나지 않고 자동 줄바꿈 되도록 설정 */
+  word-break: keep-all; 
+  overflow-wrap: break-word;
 }
 
 /* 테이블 헤더: [학번], [제목], [키워드] */
