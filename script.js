@@ -32,8 +32,8 @@ window.onload = () => {
         };
       });
       
-      // 처음 로딩 시 '익명' 반을 먼저 보여줍니다.
-      filterByClass('익명');
+      // 처음 로딩 시 '추천작'을 먼저 보여줍니다.
+      filterByRecommended();
     },
     error: function(error) {
       console.error("데이터 로드 실패:", error);
