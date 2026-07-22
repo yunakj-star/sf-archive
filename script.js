@@ -133,5 +133,5 @@ function closeModal() {
 function filterByRecommended() {
   closeModal(); 
   const filtered = stories.filter(story => story.isRecommended);
-  renderTable(filtered, "★ 추천 목록");
+  renderTable(filtered, "★ 목록");
 }
