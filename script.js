@@ -64,12 +64,16 @@ function renderTable(data, viewTitle) {
 // ▼ 새로 추가된 부분: 추천작이면 별 아이콘 생성
     const starBadge = story.isRecommended ? `<span class="star-icon">★</span>` : '';
 
+      // (기존 코드)
+    const starBadge = story.isRecommended ? `<span class="star-icon">★</span>` : '';
+
+    // ▼ 이 부분(tr.innerHTML)에 <td>가 총 4개 들어가야 줄이 맞습니다!
     tr.innerHTML = `
       <td>${story.id}</td>
-      <td>${story.name}</td>
+      <td>${story.name}</td> <!-- 이 부분이 빠져있으면 칸이 밀립니다 -->
       <td>
         <a class="title-link" onclick='openModal(${JSON.stringify(story)})'>
-          ${story.title}
+          ${starBadge} ${story.title}
         </a>
       </td>
       <td>${keywordHTML}</td>
