@@ -68,9 +68,10 @@ function renderTable(data, viewTitle) {
       <td style="text-align: center;">${starBadge}</td> <!-- 추천 별 칸 -->
       <td>${story.id}</td>                              <!-- 학번 칸 -->
       <td>${story.name}</td>                            <!-- 이름 칸 -->
-      <td>
-        <a class="title-link" onclick='openModal(${JSON.stringify(story)})'>
-          ${story.title}                                <!-- 제목 칸 (별 삭제됨) -->
+     <td>
+        <!-- 쌍따옴표("")로 변경하고 치환 함수(replace) 추가 -->
+        <a class="title-link" onclick="openModal(${JSON.stringify(story).replace(/"/g, '&quot;')})">
+          ${story.title}                                <!-- 제목 칸 -->
         </a>
       </td>
       <td>${keywordHTML}</td>                           <!-- 키워드 칸 -->
