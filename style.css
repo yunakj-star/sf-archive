@@ -158,11 +158,11 @@ table {
 }
 
 /* ★ 각 열(5칸)의 너비를 비율로 고정 */
-th:nth-child(1) { width: 4%; text-align: center; } /* 1열: 추천(별) */
+th:nth-child(1) { width: 2%; text-align: center; } /* 1열: 추천(별) */
 th:nth-child(2) { width: 14%; } /* 2열: 학번 */
 th:nth-child(3) { width: 13%; } /* 3열: 이름 */
-th:nth-child(4) { width: 37%; } /* 4열: 제목 */
-th:nth-child(5) { width: 32%; } /* 5열: 키워드 */
+th:nth-child(4) { width: 32%; } /* 4열: 제목 */
+th:nth-child(5) { width: 39%; } /* 5열: 키워드 */
 
 th, td {
   padding: 18px 16px; 
